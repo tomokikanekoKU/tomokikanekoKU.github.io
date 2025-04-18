@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究内容 - Kaji Research Group</title>
+    <link rel="stylesheet" href="newHP.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            padding-top: 60px; /* ナビゲーションバーの高さ分のパディングを追加 */
+        }
+        
+        .research-page {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .research-page h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .research-page h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+        }
+        
+        .research-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .research-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+        
+        .research-content h3 {
+            font-size: 2.2rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            color: #444;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .research-content h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+        }
+        
+        .research-themes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        
+        .theme-group {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .theme-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .theme-group h4 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .theme-group ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .theme-group li {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .theme-group li:before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: #007bff;
+        }
+        
+        .research-details {
+            margin-top: 3rem;
+        }
+        
+        .research-details h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .research-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .research-detail-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .research-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .research-detail-card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .research-detail-card p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+        
+        .research-detail-card ul {
+            margin-top: 1.2rem;
+            padding-left: 1.8rem;
+        }
+        
+        .research-detail-card li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .research-detail-card li:before {
+            content: "•";
+            position: absolute;
+            left: -1.2rem;
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .research-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .research-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .research-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        @media (max-width: 768px) {
+            .research-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .research-content p {
+                font-size: 1.1rem;
+            }
+            
+            .research-page h1 {
+                font-size: 2.5rem;
+            }
+            
+            .research-content h3, .research-details h3 {
+                font-size: 2rem;
+            }
+            
+            .research-detail-card {
+                padding: 1.5rem;
+            }
+            
+            .research-detail-card h4 {
+                font-size: 1.5rem;
+            }
+            
+            .research-detail-card p {
+                font-size: 1.05rem;
+            }
+            
+            .research-detail-card li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">加地研究室</div>
+        <div class="nav-links">
+            <a href="index250416.html">ホーム</a>
+            <a href="Kaji Research Group - Research.html">研究内容</a>
+            <a href="Kaji Research Group - Members.html">メンバー</a>
+            <a href="Kaji Research Group - Publications.html">研究業績</a>
+            <a href="Kaji Research Group - Graduates.html">卒業生</a>
+            <a href="conferences.html">学会・講演</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="research-page">
+        <h1>研究内容</h1>
+        
+        <div class="research-content">
+            <p>半導体分野における微細加工技術を駆使して作製したマイクロ・ナノ空間を、生体関連物質や細胞の計測・診断の「場」として用いることで、新しいバイオ分析技術を創出すべく研究開発を行っています。最終的にはこのようなLab-on-a-Chip（µTAS）という分析技術をさらに拡張して、生命（生命現象）をチップ上で人工的に再現できるようなLife-on-a-Chipの創成を目指しています。</p>
+            
+            <div class="research-image">
+                <img src="画像/Tomoki's First Illustration.jpeg" alt="マイクロ流体デバイスのイラスト">
+            </div>
+            
+            <div class="research-details">
+                <h3>研究詳細</h3>
+                <div class="research-details-grid">
+                    <div class="research-detail-card">
+                        <h4>マイクロ流体デバイス</h4>
+                        <p>マイクロ流体デバイスは、マイクロメートルスケールの流路を持つデバイスで、微量の液体を精密に制御することができます。当研究室では、半導体微細加工技術を活用して、高精度なマイクロ流体デバイスを設計・作製しています。これらのデバイスは、細胞の分離、培養、分析など、様々なバイオアプリケーションに応用されています。</p>
+                        <ul>
+                            <li>シリコン基板を用いたマイクロ流体デバイスの作製：半導体製造プロセスを活用した高精度な流路形成</li>
+                            <li>PDMSを用いたソフトリソグラフィーによるデバイス作製：柔軟性と透明性を活かした細胞観察用デバイス</li>
+                            <li>3Dプリンティング技術を活用したデバイス作製：複雑な3次元構造を持つマイクロ流体デバイスの迅速なプロトタイピング</li>
+                            <li>ナノスケールの構造体を活用した細胞操作技術：細胞の機械的特性に基づく分離技術の開発</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-detail-card">
+                        <h4>細胞操作技術</h4>
+                        <p>細胞を正確に操作・分離する技術は、バイオ研究において重要な役割を果たします。当研究室では、マイクロ流体デバイスを活用した細胞操作技術の開発を行っています。これらの技術は、単一細胞解析や細胞間相互作用の研究に不可欠です。特に、細胞の機械的特性（サイズ、形状、硬さなど）に基づく分離技術の開発に注力しています。</p>
+                        <ul>
+                            <li>マイクロ流体デバイスを用いた細胞分離技術：細胞の機械的特性を利用した高純度な分離</li>
+                            <li>光操作技術を用いた細胞操作：レーザートラップを用いた非接触細胞操作</li>
+                            <li>電気泳動を用いた細胞分離・操作：細胞表面の電荷特性を利用した分離技術</li>
+                            <li>機械的特性に基づく細胞分離：細胞の硬さや変形能を利用した新しい分離技術の開発</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-detail-card">
+                        <h4>バイオセンサー</h4>
+                        <p>バイオセンサーは、生体分子や細胞を検出するためのデバイスです。当研究室では、高感度・高選択性のバイオセンサーの開発を行っています。これらのセンサーは、マイクロ流体デバイスと統合することで、細胞内の分子動態をリアルタイムで計測することが可能になります。特に、細胞内シグナル伝達のリアルタイム計測に注力しています。</p>
+                        <ul>
+                            <li>電気化学的バイオセンサーの開発：高感度な電気化学検出法の開発</li>
+                            <li>光学式バイオセンサーの開発：蛍光や発光を利用した高選択性センサー</li>
+                            <li>マイクロ流体デバイスとバイオセンサーの統合：細胞内分子のリアルタイム計測システム</li>
+                            <li>細胞内シグナル伝達のリアルタイム計測：細胞内Ca2+濃度変化の計測技術</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-detail-card">
+                        <h4>人工臓器チップ</h4>
+                        <p>人工臓器チップは、生体組織や臓器の機能をチップ上で再現する技術です。当研究室では、人工臓器チップの開発を通じて、創薬スクリーニングや再生医療への応用を目指しています。これらのチップは、生体の複雑な機能を再現し、新薬開発や疾患研究に革新的なアプローチを提供します。特に、多臓器連携チップの開発に注力しています。</p>
+                        <ul>
+                            <li>肝臓チップの開発：肝細胞の機能を再現した創薬スクリーニング用チップ</li>
+                            <li>血管チップの開発：血管内皮細胞と血流を再現した血管モデル</li>
+                            <li>多臓器連携チップの開発：複数の臓器機能を連携させた統合システム</li>
+                            <li>細胞組織の3次元構築技術：生体に近い3次元構造を持つ組織モデルの構築</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-detail-card">
+                        <h4>応用研究</h4>
+                        <p>当研究室で開発した技術は、様々な分野への応用が期待されています。特に、創薬スクリーニング、再生医療、環境モニタリングなどの分野での応用研究を進めています。これらの応用研究を通じて、社会に貢献する技術の開発を目指しています。</p>
+                        <ul>
+                            <li>創薬スクリーニングへの応用：人工臓器チップを用いた新薬開発支援</li>
+                            <li>再生医療への応用：細胞操作技術を用いた再生医療技術の開発</li>
+                            <li>環境モニタリングへの応用：マイクロ流体デバイスを用いた環境汚染物質の検出</li>
+                            <li>がん研究への応用：がん細胞の特性を利用した診断・治療技術の開発</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-detail-card">
+                        <h4>将来の展望</h4>
+                        <p>当研究室では、マイクロ・ナノテクノロジーとバイオテクノロジーの融合により、革新的なバイオ分析技術の開発を目指しています。将来的には、これらの技術をさらに発展させ、個別化医療や精密医療への貢献を目指します。また、研究室で開発した技術の社会実装を通じて、医療・創薬・環境分野への貢献を目指しています。</p>
+                        <ul>
+                            <li>個別化医療への応用：患者個別の細胞特性に基づく治療法の開発</li>
+                            <li>AIとマイクロ流体デバイスの融合：機械学習を活用した細胞分析技術の開発</li>
+                            <li>ポータブル診断デバイスの開発：現場で使用可能な小型診断システムの開発</li>
+                            <li>国際共同研究の推進：グローバルな研究ネットワークの構築</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>加地研究室</h3>
+                <p>住所: 〒819-0395 福岡県福岡市西区元岡744</p>
+                <p>電話: 092-802-2510</p>
+                <p>メール: kaji [at] cstf.kyushu-u.ac.jp</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 加地研究室. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="newHP.js"></script>
+</body>
+</html> 
