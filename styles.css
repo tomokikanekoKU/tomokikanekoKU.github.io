@@ -1,0 +1,121 @@
+/* 学会・講演ページのスタイル */
+.conferences-section {
+    padding: 2rem 0;
+}
+
+.conference-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #333;
+    background: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.filter-btn:hover {
+    background: #f0f0f0;
+}
+
+.filter-btn.active {
+    background: #333;
+    color: white;
+}
+
+.conference-list {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.conference-item {
+    display: flex;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.conference-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.conference-date {
+    min-width: 120px;
+    font-weight: bold;
+    color: #666;
+    padding-right: 1rem;
+    border-right: 2px solid #eee;
+}
+
+.conference-content {
+    flex: 1;
+    padding-left: 1.5rem;
+}
+
+.conference-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.conference-type {
+    color: #e74c3c;
+    font-weight: bold;
+    margin: 0.3rem 0;
+}
+
+.conference-title {
+    margin: 0.3rem 0;
+    color: #333;
+    font-weight: 500;
+}
+
+.conference-authors {
+    margin: 0.3rem 0;
+    color: #666;
+}
+
+.conference-location {
+    margin: 0.3rem 0;
+    color: #666;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .conference-item {
+        flex-direction: column;
+    }
+
+    .conference-date {
+        border-right: none;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+        min-width: auto;
+    }
+
+    .conference-content {
+        padding-left: 0;
+    }
+
+    .conference-filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-btn {
+        width: 200px;
+        text-align: center;
+    }
+} 
