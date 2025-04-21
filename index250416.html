@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究室ホームページ</title>
+    <link rel="stylesheet" href="newHP.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            padding-top: 60px; /* ナビゲーションバーの高さ分のパディングを追加 */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* メインコンテンツとサイドバーのレイアウト */
+        .main-content {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .content-sections {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            padding-top: 2rem;
+        }
+        
+        /* ヒーローセクションのスタイル */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 300px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* What's New! セクションのスタイル */
+        .whats-new-section {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .whats-new-section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .whats-new-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+        }
+        
+        .news-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .news-item {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .news-date {
+            min-width: 120px;
+            color: #007bff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding-right: 1.5rem;
+            border-right: 1px solid #eee;
+        }
+        
+        .news-content {
+            flex-grow: 1;
+        }
+        
+        .news-content h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .news-item {
+                flex-direction: column;
+            }
+            
+            .news-date {
+                min-width: auto;
+                padding-right: 0;
+                padding-bottom: 0.5rem;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                margin-bottom: 0.5rem;
+            }
+            
+            .news-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .news-content p {
+                font-size: 0.95rem;
+            }
+            
+            .whats-new-section h2 {
+                font-size: 2.3rem;
+            }
+        }
+        
+        /* 研究内容セクションのスタイル追加 */
+        .research-section {
+            padding: 4rem 0;
+        }
+        
+        .research-section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .research-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+        }
+        
+        .research-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .research-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+        
+        .research-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .research-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .research-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-caption {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .research-content h3 {
+            font-size: 2rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            color: #444;
+            font-weight: 600;
+        }
+        
+        .research-themes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        
+        .theme-group {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .theme-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .theme-group h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .theme-group ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .theme-group li {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .theme-group li:before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: #007bff;
+        }
+        
+        /* 所属・アクセスセクションのスタイル */
+        .info-section {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .info-section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .info-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+        }
+        
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .info-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .info-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            white-space: pre-line;
+        }
+        
+        @media (max-width: 768px) {
+            .research-themes {
+                grid-template-columns: 1fr;
+            }
+            
+            .research-content p {
+                font-size: 1.1rem;
+            }
+            
+            .theme-group h4 {
+                font-size: 1.3rem;
+            }
+            
+            .theme-group li {
+                font-size: 1rem;
+            }
+            
+            .info-container {
+                flex-direction: column;
+            }
+            
+            .info-card {
+                margin: 1rem 0;
+            }
+            
+            .research-section h2, .info-section h2 {
+                font-size: 2.3rem;
+            }
+            
+            .research-content h3 {
+                font-size: 1.7rem;
+            }
+            
+            .info-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* 加地研学年歴セクションのスタイル */
+        .academic-calendar-section {
+            padding: 2rem 0;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .academic-calendar-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .academic-calendar-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+        }
+        
+        .calendar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+        
+        .calendar-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .calendar-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .calendar-date {
+            color: #007bff;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .calendar-content h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .calendar-content p {
+            color: #444;
+            line-height: 1.5;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .content-sections {
+                padding-right: 0;
+            }
+            
+            .sidebar {
+                width: 100%;
+                padding-top: 0;
+                margin-top: 2rem;
+            }
+            
+            .academic-calendar-section {
+                margin: 0 2rem;
+            }
+            
+            .calendar-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .calendar-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .calendar-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .academic-calendar-section {
+                margin: 0 1rem;
+            }
+            
+            .calendar-item {
+                padding: 0.8rem;
+            }
+            
+            .calendar-date {
+                font-size: 1.1rem;
+            }
+            
+            .calendar-content h3 {
+                font-size: 1rem;
+            }
+            
+            .academic-calendar-section h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">加地研究室</div>
+        <div class="nav-links">
+            <a href="index250416.html">ホーム</a>
+            <a href="Kaji Research Group - Research.html">研究内容</a>
+            <a href="Kaji Research Group - Members.html">メンバー</a>
+            <a href="Kaji Research Group - Publications.html">研究業績</a>
+            <a href="Kaji Research Group - Graduates.html">卒業生</a>
+            <a href="conferences.html">学会・講演</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1><i>Kaji Research Group</i></h1>
+            <p><i>Department of Applied Chemistry, Kyushu University</i></p>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <div class="content-sections">
+            <section id="whats-new" class="whats-new-section">
+                <div class="container">
+                    <h2>What's New!</h2>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-date">2024.04.16</div>
+                            <div class="news-content">
+                                <h3>研究室ホームページをリニューアルしました</h3>
+                                <p>加地研究室のホームページを新デザインにリニューアルしました。より見やすく、情報が整理されたサイトになりました。</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">2024.03.15</div>
+                            <div class="news-content">
+                                <h3>第92回日本分析化学会年会で発表を行いました</h3>
+                                <p>堤悠生さんが「細胞の機械的特性に基づく分離技術の開発」というタイトルで口頭発表を行いました。</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">2024.02.20</div>
+                            <div class="news-content">
+                                <h3>第71回日本分析化学会九州支部例会で発表を行いました</h3>
+                                <p>義永晴雲さんが「マイクロ流体デバイスを用いた細胞分離技術の開発」というタイトルでポスター発表を行いました。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research" class="research-section">
+                <div class="container">
+                    <h2>研究内容</h2>
+                    <div class="research-content">
+                        <p>半導体分野における微細加工技術を駆使して作製したマイクロ・ナノ空間を、生体関連物質や細胞の計測・診断の「場」として用いることで、新しいバイオ分析技術を創出すべく研究開発を行っています。最終的にはこのようなLab-on-a-Chip（µTAS）という分析技術をさらに拡張して、生命（生命現象）をチップ上で人工的に再現できるようなLife-on-a-Chipの創成を目指しています。</p>
+                        
+                        <div class="research-image">
+                            <img src="画像/Tomoki's First Illustration.jpeg" alt="マイクロ流体デバイスのイラスト">
+                        </div>
+                        
+                        <h3>テーマの紹介</h3>
+                        <div class="research-themes">
+                            <div class="theme-group">
+                                <h4>マイクロ・ナノデバイス開発</h4>
+                                <ul>
+                                    <li>半導体微細加工技術を用いたマイクロ流体デバイスの設計・作製</li>
+                                    <li>ナノスケールの構造体を活用した細胞操作技術の開発</li>
+                                    <li>高感度検出システムの統合化</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="theme-group">
+                                <h4>バイオ分析技術</h4>
+                                <ul>
+                                    <li>単一細胞レベルでの分析技術の開発</li>
+                                    <li>細胞内シグナル伝達のリアルタイム計測</li>
+                                    <li>細胞間相互作用の解析技術</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="theme-group">
+                                <h4>Life-on-a-Chip研究</h4>
+                                <ul>
+                                    <li>人工臓器チップの開発</li>
+                                    <li>細胞組織の3次元構築技術</li>
+                                    <li>生体機能のチップ上再現</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="theme-group">
+                                <h4>応用研究</h4>
+                                <ul>
+                                    <li>創薬スクリーニングへの応用</li>
+                                    <li>再生医療への応用</li>
+                                    <li>環境モニタリングへの応用</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="info" class="info-section">
+                <h2>所属・アクセス</h2>
+                <div class="info-container">
+                    <div class="info-card">
+                        <h3>所属</h3>
+                        <p>［工学部/Faculty of engineering］ 物質科学工学科  応用化学コース   機能物質化学クラス  
+
+/ Department of  Materials science and Engineering, Applied Chemistry Course
+
+［工学府/Graduate school of engineering］ （~2021.3）化学システム工学専攻 /  Department  of  Chemical System Engineering
+
+（2021.4~）応用化学専攻 機能物質科学講座 / Department of Applied Chemistry</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>アクセス</h3>
+                        <p>Department of Applied Chemistry, Faculty of  Engineering
+Kyushu University
+744 Motooka, Nishi-ku, Fukuoka 819-0395, Japan
+Tel: +81-92-802-2886    
+
+〒819-0395  福岡市西区元岡744
+九州大学大学院 工学研究院 応用化学部門 
+West 3号館4F 加地研究室
+TEL：092-802-2886</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <div class="sidebar">
+            <section id="academic-calendar" class="academic-calendar-section">
+                <h2>加地研学年歴</h2>
+                <div class="calendar-container">
+                    <div class="calendar-item">
+                        <div class="calendar-date">4月</div>
+                        <div class="calendar-content">
+                            <p>親和会</p>
+                            <p>ソフトボール大会</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">5月</div>
+                        <div class="calendar-content">
+                            <p>新入生歓迎コンパ</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">6月</div>
+                        <div class="calendar-content">
+                            <p>化学関連支部合同九州大会<p></p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">7月</div>
+                        <div class="calendar-content">
+                            <p>ひたすら研究<p></p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">8月</div>
+                        <div class="calendar-content">
+                            <p>中間報告会(M2)</p>
+                            <p>テーマ説明会(M1)</p>
+                            <p>大学院入試(B4)</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">9月</div>
+                        <div class="calendar-content">
+                            <p>分析化学会年会</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">10月</div>
+                        <div class="calendar-content">
+                            <p>microTAS</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">11月</div>
+                        <div class="calendar-content">
+                            <p>CHEMINAS</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">12月</div>
+                        <div class="calendar-content">
+                            <p>忘年会</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">1月</div>
+                        <div class="calendar-content">
+                            <p>ひたすら研究</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">2月</div>
+                        <div class="calendar-content">
+                           <p>修士・学士試問会（M2, B4）</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">3月</div>
+                        <div class="calendar-content">
+                            <p>化学会年会</p>
+                            <p>追い出しコンパ</p>
+                            <p>卒業式</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>加地研究室</h3>
+                <p>住所: 〒819-0395 福岡県福岡市西区元岡744</p>
+                <p>電話: 092-802-2510</p>
+                <p>メール: kaji [at] cstf.kyushu-u.ac.jp</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 加地研究室. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="newHP.js"></script>
+</body>
+</html>
