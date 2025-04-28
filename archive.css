@@ -1,0 +1,66 @@
+.archive {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.archive .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.archive h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.archive-year {
+    margin-bottom: 40px;
+}
+
+.archive-year h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.archive-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.archive-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.archive-item:hover {
+    transform: translateY(-2px);
+}
+
+.archive-date {
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 8px;
+}
+
+.archive-text {
+    color: #333;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .archive {
+        padding: 40px 0;
+    }
+
+    .archive-item {
+        padding: 15px;
+    }
+} 
